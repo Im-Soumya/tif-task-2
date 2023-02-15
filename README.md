@@ -4,8 +4,8 @@ This is the task 2 of Round 2 (React Assignment).
 
 Task 2: Build the missing parts of this project and fix the bugs.
 
-    * Values in the draft card are made to update in real-time based on the user's input.
-    * Validations are added in the interview settings tab
+    - [x] Values in the draft card are made to update in real-time based on the user's input.
+    - [x] Validations are added in the interview settings tab
 
 Check the live version [here](https://tif-task-2-bug-fix.vercel.app/)
 
