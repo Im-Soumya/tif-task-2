@@ -5,10 +5,13 @@ import React, {useEffect} from "react";
 import * as Yup from "yup";
 import { PageNumbers } from "../../interface/home";
 import { IJobDetails } from "../../interface/forms";
+import { useData } from "./DataProvider";
 
 const JobDetailsForm: React.FC<{
   handleTab: (n: PageNumbers) => void;
 }> = ({ handleTab }) => {
+
+  const {setState} : any = useData()
 
   const { handleChange, errors, touched, handleBlur, handleSubmit, values } =
     useFormik<IJobDetails>({
@@ -27,6 +30,10 @@ const JobDetailsForm: React.FC<{
         handleTab(2);
       },
     });
+
+  useEffect(() => {
+    setState((prev: any) => ({...prev, jobDetails: values}))
+  }, [values])
 
   return (
     <Box width="100%" as="form" onSubmit={handleSubmit as any}>

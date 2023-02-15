@@ -10,10 +10,14 @@ import {
   interviewLanguageOptions,
   interviewModeOptions,
 } from "./constants";
+import { useData } from "./DataProvider";
 
 const InterviewDetailsForm: React.FC<{
   handleTab: (n: PageNumbers) => void;
 }> = ({ handleTab }) => {
+
+  const {setState}: any = useData()
+
   const {
     errors,
     touched,
@@ -27,11 +31,20 @@ const InterviewDetailsForm: React.FC<{
       interviewDuration: "",
       interviewLanguage: "",
     },
+    validationSchema: Yup.object().shape({
+      interviewMode: Yup.string().required("Interview mode is required"),
+      interviewDuration: Yup.string().required("Interview duration is required"),
+      interviewLanguage: Yup.string().required("Interview language is required")
+    }),
     onSubmit: (values) => {
       console.log({ values });
       alert("Form successfully submitted");
     },
   });
+
+  useEffect(() => {
+    setState((prev: any) => ({...prev, interviewSettings: values}))
+  }, [values])
 
   return (
     <Box width="100%" as="form" onSubmit={handleSubmit as any}>
