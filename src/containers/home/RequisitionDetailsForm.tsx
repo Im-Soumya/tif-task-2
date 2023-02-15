@@ -12,7 +12,9 @@ import { useData } from "./DataProvider";
 const RequisitionDetailsForm: React.FC<{
   handleTab: (n: PageNumbers) => void;
 }> = ({ handleTab }) => {
-  const {setState}:any = useData()
+
+  const {setState} :any = useData()
+
   const {
     handleChange,
     errors,
@@ -45,11 +47,9 @@ const RequisitionDetailsForm: React.FC<{
     },
   });
 
-
   useEffect(() => {
-    setState((prev: any) => ({ ...prev, requisitionDetails: values }));
-  }, [values]);
-  
+    setState((prev: any) => ({...prev, requisitionDetails: values}))
+  }, [values])
   
   return (
     <Box width="100%" as="form" onSubmit={handleSubmit as any}>
